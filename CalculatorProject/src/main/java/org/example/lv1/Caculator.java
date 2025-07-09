@@ -6,7 +6,6 @@ public class Caculator {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int result, num1, num2 = 0;
-        String str;
         char operation;
 
         while (true) {
@@ -29,14 +28,12 @@ public class Caculator {
 
 
             System.out.print("사칙 연산 기호를 입력하세요(+, -, *, /): ");
-            str = in.next();
-            operation = str.charAt(0);
+            operation = in.next().charAt(0);
 
             while (operation != '+' && operation != '-' && operation != '*' && operation != '/') {
                 System.out.println("올바른 사칙 연산 기호가 아닙니다.");
                 System.out.print("사칙 연산 기호를 입력하세요(+, -, *, /): ");
-                str = in.next();
-                operation = str.charAt(0);
+                operation = in.next().charAt(0);
             }
 
             switch (operation) {
