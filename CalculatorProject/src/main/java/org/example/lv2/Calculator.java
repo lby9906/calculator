@@ -3,7 +3,7 @@ package org.example.lv2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator2 {
+public class Calculator {
     private List<Integer> arrayList = new ArrayList<>();
     private int result;
 
