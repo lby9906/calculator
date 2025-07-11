@@ -1,10 +1,15 @@
-package org.example.lv1;
+package org.example.lv2;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
-public class Caculator {
+public class App2 {
     public static void main(String[] args) {
+        List<Integer> calculatorList = new ArrayList<>();
+        Calculator2 calculator123 = new Calculator2();
+
         Scanner in = new Scanner(System.in);
         int num1 = 0;
         int num2 = 0;
@@ -55,20 +60,15 @@ public class Caculator {
             }
 
             int result = switch (operation) {
-                case '+' -> num1 + num2;
-                case '-' -> num1 - num2;
-                case '*' -> num1 * num2;
-                case '/' -> {
-                    if (num2 == 0) {
-                        System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
-                        yield 0;
-                    } else {
-                        yield num1 / num2;
-                    }
-                }
+                case '+' -> calculator123.plus(num1, num2, operation);
+                case '-' -> calculator123.minus(num1, num2, operation);
+                case '*' -> calculator123.multiplied(num1, num2, operation);
+                case '/' -> calculator123.divided(num1, num2, operation);
                 default -> throw new IllegalStateException("switch에 도달할 수 없는 연산자입니다.");
             };
             System.out.println("계산 결과: " + result);
+            calculatorList.add(result);
+            calculator123.setArrayList(calculatorList);
 
             System.out.println("더 계산하시겠습니까?(y/exit): ");
             String type = in.next();
@@ -77,6 +77,12 @@ public class Caculator {
                 break;
             }
         }
+        calculator123.getArrayList();
 
+        System.out.println();
+
+        System.out.println(":::가장 먼저 저장된 데이터 삭제:::");
+        calculator123.removeResult();
+        calculator123.getArrayList();
     }
 }

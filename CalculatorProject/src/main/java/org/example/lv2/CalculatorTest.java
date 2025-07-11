@@ -3,50 +3,54 @@ package org.example.lv2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator2 {
+public class Calculator {
     private List<Integer> arrayList = new ArrayList<>();
-    private int result;
+    int result;
 
     public int plus(int num1, int num2, char operation) {
         if (operation == '+') {
-            return num1 + num2;
+            int result = num1 + num2;
+            arrayList.add(num1+num2);
+            System.out.println("결과: " + result);
         }
-        return 0;
+        return result;
     }
 
     public int minus(int num1, int num2, char operation) {
         if (operation == '-') {
-            return num1 - num2;
+            result = num1 - num2;
+            arrayList.add(result);
+            System.out.println("결과: " + result);
         }
-        return 0;
+        return result;
     }
 
     public int multiplied(int num1, int num2, char operation) {
         if (operation == '*') {
-            return num1 * num2;
+            result = num1 * num2;
+            arrayList.add(result);
+            System.out.println("결과: " + result);
         }
-        return 0;
+        return result;
     }
 
     public int divided(int num1, int num2, char operation) {
         if (operation == '/') {
-            while (true){
-                if (num2 == 0) {
-                    System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
-                    return 0;
-                } else {
-                    return num1 / num2;
-                }
+            if (num2 == 0) {
+                System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
+            } else {
+                result = num1 / num2;
+                arrayList.add(result);
+                System.out.println("결과: " + result);
             }
         }
-        return 0;
+        return result;
     }
 
-    public int removeResult() {
+    public void removeResult() {
         if (!arrayList.isEmpty()) {
             arrayList.remove(0);
         }
-        return result;
     }
 
     public List<Integer> getArrayList() {
