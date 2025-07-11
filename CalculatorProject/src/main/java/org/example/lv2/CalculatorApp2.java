@@ -5,10 +5,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class App2 {
+public class CalculatorApp2 {
     public static void main(String[] args) {
         List<Integer> calculatorList = new ArrayList<>();
-        Calculator2 calculator123 = new Calculator2();
+        Calculator calculator = new Calculator();
 
         Scanner in = new Scanner(System.in);
         int num1 = 0;
@@ -60,15 +60,15 @@ public class App2 {
             }
 
             int result = switch (operation) {
-                case '+' -> calculator123.plus(num1, num2, operation);
-                case '-' -> calculator123.minus(num1, num2, operation);
-                case '*' -> calculator123.multiplied(num1, num2, operation);
-                case '/' -> calculator123.divided(num1, num2, operation);
+                case '+' -> calculator.plus(num1, num2, operation);
+                case '-' -> calculator.minus(num1, num2, operation);
+                case '*' -> calculator.multiplied(num1, num2, operation);
+                case '/' -> calculator.divided(num1, num2, operation);
                 default -> throw new IllegalStateException("switch에 도달할 수 없는 연산자입니다.");
             };
             System.out.println("계산 결과: " + result);
             calculatorList.add(result);
-            calculator123.setArrayList(calculatorList);
+            calculator.setArrayList(calculatorList);
 
             System.out.println("더 계산하시겠습니까?(y/exit): ");
             String type = in.next();
@@ -77,12 +77,12 @@ public class App2 {
                 break;
             }
         }
-        calculator123.getArrayList();
+        calculator.getArrayList();
 
         System.out.println();
 
         System.out.println(":::가장 먼저 저장된 데이터 삭제:::");
-        calculator123.removeResult();
-        calculator123.getArrayList();
+        calculator.removeResult();
+        calculator.getArrayList();
     }
 }
