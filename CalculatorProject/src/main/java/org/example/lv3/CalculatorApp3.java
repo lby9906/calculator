@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CalculatorApp3Test {
+public class CalculatorApp3 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
