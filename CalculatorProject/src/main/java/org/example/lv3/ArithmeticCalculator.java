@@ -2,6 +2,7 @@ package org.example.lv3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T> {
@@ -9,13 +10,18 @@ public class ArithmeticCalculator<T> {
     private Number result;
 
     public <T extends Number> List<T> getNumberMaxList(int number, List<T> operationRequestList) {
-        List<T> maxList = operationRequestList.stream().filter(list -> list.doubleValue() > number).collect(Collectors.toList());
-        System.out.println("결과: " + maxList);
-        return maxList;
+
+        if (operationRequestList.isEmpty()) {
+            throw new NoSuchElementException("List가 비어있습니다.");
+        }else {
+            List<T> maxList = operationRequestList.stream().filter(list -> list.doubleValue() > number).collect(Collectors.toList());
+            System.out.println("결과: " + maxList);
+            return maxList;
+        }
     }
 
 
-    public <S extends Number> Number calculate(S num1, S num2, OperatorType operation) {
+    public <S extends Number> Number calculate(Number num1, Number num2, OperatorType operation) {
         if (operation == OperatorType.DIV && num2.doubleValue() == 0.0) {
             throw new IllegalArgumentException("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
         }
